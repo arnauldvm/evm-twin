@@ -3,6 +3,7 @@ import logging
 import sys
 
 from . import __version__
+from . import show
 
 __author__ = "Arnauld Van Muysewinkel"
 __copyright__ = "Arnauld Van Muysewinkel"
@@ -48,6 +49,10 @@ def parse_args(args):
         action="store_const",
         const=logging.DEBUG,
     )
+
+    subparsers = parser.add_subparsers(dest='command')
+    show.add_parser(subparsers)
+
     return parser.parse_args(args)
 
 
@@ -66,7 +71,14 @@ def setup_logging(loglevel):
 def main(args):
     args = parse_args(args)
     setup_logging(args.loglevel)
-    _logger.info("Script ends here")
+    command = args.command
+    _logger.debug("Launching command %r", command)
+    match command:
+        case 'show':
+            show.run(args)
+        case _:
+            _logger.error("Unsupported command %r", command)
+    _logger.info("Command completed")
 
 
 def run():
