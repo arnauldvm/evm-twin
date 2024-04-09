@@ -19,4 +19,5 @@ def add_parser(subparsers: argparse.Action) -> None:
 
 
 def run(args: argparse.Namespace) -> None:
+    _logger.debug("Loading image from file %r", args.input_file.name)
     pass
