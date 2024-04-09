@@ -1,0 +1,3 @@
+[submodule "tests/images"]
+	path = tests/images
+	url = https://github.com/audreyfeldroy/test-images
