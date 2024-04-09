@@ -14,7 +14,8 @@ _logger = logging.getLogger(__name__)
 
 def add_parser(subparsers: argparse.Action) -> None:
     parser = subparsers.add_parser('show')
-    parser.add_argument('-i', '--input-file', required=True, type=argparse.FileType('r'))
+    parser.add_argument('-i', '--input-file', required=True,
+                        type=argparse.FileType(mode='rb', bufsize=4096))
 
 
 def run(args: argparse.Namespace) -> None:
