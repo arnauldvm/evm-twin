@@ -1,15 +1,17 @@
 import argparse
 import logging
 import sys
+import importlib
 
 from . import __version__
-from . import show
 
 __author__ = "Arnauld Van Muysewinkel"
 __copyright__ = "Arnauld Van Muysewinkel"
 __license__ = "MIT"
 
 _logger = logging.getLogger(__name__)
+
+_command_modules = {_: importlib.import_module(f'twin.{_}') for _ in ['show']}
 
 # ---- CLI ----
 # The functions defined in this section are wrappers around the main Python
@@ -51,7 +53,8 @@ def parse_args(args):
     )
 
     subparsers = parser.add_subparsers(dest='command')
-    show.add_parser(subparsers)
+    for command in _command_modules.values():
+        command.add_parser(subparsers)
 
     return parser.parse_args(args)
 
@@ -73,11 +76,7 @@ def main(args):
     setup_logging(args.loglevel)
     command = args.command
     _logger.debug("Launching command %r", command)
-    match command:
-        case 'show':
-            show.run(args)
-        case _:
-            _logger.error("Unsupported command %r", command)
+    _command_modules[command].run(args)
     _logger.info("Command completed")
 
 
