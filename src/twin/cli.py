@@ -2,7 +2,7 @@ import argparse
 import logging
 import sys
 
-from twin import __version__
+from . import __version__
 
 __author__ = "Arnauld Van Muysewinkel"
 __copyright__ = "Arnauld Van Muysewinkel"
