@@ -11,16 +11,22 @@ _logger = logging.getLogger(__name__)
 
 def add_parser(subparsers: argparse.Action) -> None:
     parser = subparsers.add_parser('capture')
-    parser.add_argument('-i', '--input-file', required=True,
-                        type=argparse.FileType(mode='rb', bufsize=4096),
-                        help="Path of file from which to read the video")
+    group = parser.add_mutually_exclusive_group(required=True)
+    group.add_argument('-i', '--input-file',
+                       type=argparse.FileType(mode='rb', bufsize=4096),
+                       help="Path of file from which to read the video")
+    group.add_argument('-c', '--camera', action='store_true')
     parser.add_argument('-n', '--image-num', required=True, type=int,
                         help="Index of the frame to display")
 
 
 def run(args: argparse.Namespace) -> None:
-    _logger.debug("Capturing image from video file %r", args.input_file.name)
-    video = cv.VideoCapture(args.input_file.name)
+    if args.camera:
+        _logger.debug("Capturing image from default camera")
+        video = cv.VideoCapture(0)
+    else:
+        _logger.debug("Capturing image from video file %r", args.input_file.name)
+        video = cv.VideoCapture(args.input_file.name)
     if not video.isOpened():
         raise Exception("Could not read the video.")
     #   this re-opens the file, and cannot read from stdin
