@@ -17,9 +17,9 @@ def add_parser(subparsers: argparse.Action) -> None:
 
 def run(args: argparse.Namespace) -> None:
     _logger.debug("Loading image from file %r", args.input_file.name)
+    # img = cv.imread(args.input_file.name)
+    #   this re-opens the file, and cannot read from stdin
     try:
-        # img = cv.imread(args.input_file.name)
-        #   this re-opens the file, and cannot read from stdin
         image_bytes = numpy.asarray(bytearray(args.input_file.read()), dtype=numpy.uint8)
         img = cv.imdecode(image_bytes, cv.IMREAD_UNCHANGED)
     finally:
