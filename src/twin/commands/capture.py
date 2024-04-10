@@ -1,7 +1,6 @@
 import argparse
 import logging
 
-import numpy
 import cv2 as cv
 
 _logger = logging.getLogger(__name__)
