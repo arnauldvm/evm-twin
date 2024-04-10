@@ -40,6 +40,8 @@ twin
 A longer description of your project goes here...
 
 
+&rarr; `Usage ./USAGE.md`_
+
 .. _pyscaffold-notes:
 
 Note
