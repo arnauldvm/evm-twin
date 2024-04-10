@@ -10,7 +10,9 @@ _logger = logging.getLogger(__name__)
 
 
 def add_parser(subparsers: argparse.Action) -> None:
-    parser = subparsers.add_parser('capture')
+    description = "Read video from file or camera and display n-th frame in popup"
+    parser: argparse.ArgumentParser = subparsers.add_parser(
+        'capture', description=description, help=description)
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('-i', '--input-file',
                        type=argparse.FileType(mode='rb', bufsize=4096),
