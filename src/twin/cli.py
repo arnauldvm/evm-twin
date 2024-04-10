@@ -29,7 +29,9 @@ def parse_args(args):
     Returns:
       :obj:`argparse.Namespace`: command line parameters namespace
     """
-    parser = argparse.ArgumentParser(description="Twin detection system")
+    parser = argparse.ArgumentParser(
+        description="Twin detection system",
+        epilog="Use `twin <sub-command> --help` to get help on sub-command")
     parser.add_argument(
         "--version",
         action="version",
