@@ -11,7 +11,7 @@ __license__ = "MIT"
 
 _logger = logging.getLogger(__name__)
 
-_command_modules = {_: importlib.import_module(f'twin.{_}') for _ in ['show']}
+_command_modules = {_: importlib.import_module(f'twin.{_}') for _ in ['show', 'capture']}
 
 # ---- CLI ----
 # The functions defined in this section are wrappers around the main Python
