@@ -52,7 +52,7 @@ def parse_args(args):
         const=logging.DEBUG,
     )
 
-    subparsers = parser.add_subparsers(dest='command')
+    subparsers = parser.add_subparsers(dest='command', required=True)
     for command in _command_modules.values():
         command.add_parser(subparsers)
 
