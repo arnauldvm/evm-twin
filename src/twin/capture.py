@@ -21,6 +21,8 @@ def add_parser(subparsers: argparse.Action) -> None:
 def run(args: argparse.Namespace) -> None:
     _logger.debug("Capturing image from video file %r", args.input_file.name)
     video = cv.VideoCapture(args.input_file.name)
+    if not video.isOpened():
+        raise Exception("Could not read the video.")
     #   this re-opens the file, and cannot read from stdin
 
     # Attempt at reading video from bytes (does not work):
@@ -39,7 +41,7 @@ def run(args: argparse.Namespace) -> None:
     #     _logger.debug("Ignoeing frame %r", count)
 
     count = 0
-    while video.isOpened():
+    while True:
         status, frame = video.read()
         if not status:
             _logger.warn("Video stream interrupted")
