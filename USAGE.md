@@ -73,9 +73,9 @@ options:
 ### Example (video file)
 
 ```shell
-> twin -vv capture -i tests/videos/Hollywood2/AVIClips/actioncliptest00639.avi -n 10
+> twin -vv capture -i tests/videos/Hollywood2/scenes/AVIClipsScenes/sceneclipautoautotrain00133.avi -n 10
 [2024-04-10 03:21:49] DEBUG:twin.cli:Launching command 'capture'
-[2024-04-10 03:21:49] DEBUG:twin.capture:Capturing image from video file 'tests/videos/Hollywood2/AVIClips/actioncliptest00639.avi'
+[2024-04-10 03:21:49] DEBUG:twin.capture:Capturing image from video file 'tests/videos/Hollywood2/scenes/AVIClipsScenes/sceneclipautoautotrain00133.avi'
 [2024-04-10 03:21:49] DEBUG:twin.capture:Ignoring frame 1
 [2024-04-10 03:21:49] DEBUG:twin.capture:Ignoring frame 2
 [2024-04-10 03:21:49] DEBUG:twin.capture:Ignoring frame 3
