@@ -1,3 +1,24 @@
+Instructions to setup your development environment
+==================================================
+
+Installing dlib
+---------------
+
+- Install VSCode Community (C++ Desktop option), it must include cpp compiler and CMake
+- Launch command prompt (not powershell, because of `vcvars64.bat`)
+- activate venv, i.e. `.venv\Scripts\activate.bat`
+- Make sure its bin dir is in the PATH, by launching  
+  `C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat`
+- launch `pip install dlib`
+
+Installing other dependencies
+-----------------------------
+
+Here, powershell is OK
+
+- `pip install -e .`
+
+
 How to use twin
 ===============
 
